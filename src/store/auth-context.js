@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext({
   token: "",
@@ -9,12 +10,14 @@ const AuthContext = createContext({
 
 export const  AuthContextProvider = (props) => {
   const [token, setToken] = useState(null);
+  
   const userIsLoggedIn = !!token
   const loginHandler=(token)=>{
     setToken(token)
   }
   const logoutHandler=()=>{
     setToken(null)
+    
   }
   const contextValue = {
     token:token,
